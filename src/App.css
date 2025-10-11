@@ -1,0 +1,27 @@
+
+.container{
+  max-width: 1400px;
+}
+
+  .heading-1,
+  .heading-2,
+  .para {
+    font-family: 'Arimo', sans-serif;
+    color: hsla(221, 42%, 11%, 1);
+    font-weight: 400;
+  }
+  .heading-1 {
+   font-size: 3.25rem;  /*   52px */
+    line-height: 1.2;
+  }
+   .heading-2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+      color: hsla(0, 0%, 4%, 1);
+  }
+  .para{
+    font-size: 1.25rem;
+    color: hsla(215, 16%, 34%, 1);
+;
+    line-height: 1.3;
+  }
