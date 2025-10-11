@@ -41,13 +41,13 @@ function NavBar() {
                     {/* Auth buttons */}
                     <div className="flex items-center space-x-4">
                         <Link
-                            to="/"
+                            to="/signin"
                             className="text-gray-600 hover:text-primary-600 transition-colors"
                         >
                             Sign In
                         </Link>
 
-                        <Link to="/" className="btn-primary">
+                        <Link to="/signup" className="btn-primary">
                             Get Started
                             <ArrowRight className="w-5 h-5" />
 

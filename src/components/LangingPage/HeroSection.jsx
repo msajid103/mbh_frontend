@@ -1,6 +1,7 @@
 import React from 'react'
 import { ArrowRight } from 'lucide-react';
 import heroSection from '../../assets/heroSection.jpeg';
+import { Link } from 'react-router-dom';
 
 function HeroSection() {
   return (
@@ -15,13 +16,13 @@ function HeroSection() {
             The all-in-one platform for managing construction and real estate projects. Collaborate with your team, track progress, and deliver projects on time and within budget.
           </p>
           <div className="flex gap-4">
-            <button className="btn-primary">
+            <Link to="/signup"  className="btn-primary">
               Start Free Trial
               <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="btn-secondary">
+            </Link >
+            <Link to="/" className="btn-secondary">
               Learn more
-            </button>
+            </Link >
           </div>
         </div>
         <div className="justify-self-end">
