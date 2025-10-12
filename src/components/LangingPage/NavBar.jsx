@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo_jp from "../../assets/logo_jp.jpeg"
+import logo from "../../assets/logo.png"
 import { ArrowRight } from 'lucide-react'
 function NavBar() {
     return (
@@ -9,43 +9,47 @@ function NavBar() {
                 <div className="flex justify-between items-center py-4">
                     <div className="flex items-center justify-center space-x-2">
                         <img
-                            src={logo_jp}
+                            src={logo}
                             alt="VAT Buddy Logo"
                             className="w-[76.515625px] h-[40px] object-contain"
                         />
                     </div>
 
 
-                    {/* Nav links */}
-                    {/* <div className="hidden md:flex items-center space-x-8">
-                        <a
-                            href="#features"
+                
+
+                    {/* Auth buttons */}
+                    <div className="flex items-center space-x-12">
+                        <Link
+                            to="/"
                             className="text-gray-600 hover:text-primary-600 transition-colors"
                         >
-                            Features
-                        </a>
-                        <a
-                            href="#pricing"
+                            Contact Us
+                        </Link>
+                        <Link
+                            to="/"
+                            className="text-gray-600 hover:text-primary-600 transition-colors"
+                        >
+                            FAQ’s
+                        </Link>
+                        <Link
+                            to="/"
                             className="text-gray-600 hover:text-primary-600 transition-colors"
                         >
                             Pricing
-                        </a>
-                        <a
-                            href="#contact"
+                        </Link>
+                        <Link
+                            to="/"
                             className="text-gray-600 hover:text-primary-600 transition-colors"
                         >
-                            Contact
-                        </a>
-                    </div> */}
-
-                    {/* Auth buttons */}
-                    <div className="flex items-center space-x-4">
+                            About Us
+                        </Link>                      
                         <Link
                             to="/signin"
                             className="text-gray-600 hover:text-primary-600 transition-colors"
                         >
                             Sign In
-                        </Link>
+                        </Link>                     
 
                         <Link to="/signup" className="btn-primary">
                             Get Started

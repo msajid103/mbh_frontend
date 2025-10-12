@@ -1,22 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import AuthContainer from '../../components/Auth/AuthContainer';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 export default function SignInPage() {
+    const navigate = useNavigate();
+    const [error, setError] = useState('Sooner Change into New Page');
     const [showPassword, setShowPassword] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [invalidFields, setInvalidFields] = useState({});
+    const [formData, setFormData] = useState({ email: '', password: '' });
 
-    const handleSubmit = () => {
-        console.log('Login:', { email, password });
-    };
 
-    console.log('Login:', { email, password });
 
+    const onChangeHandle = (e) => {
+        const { name, value } = e.target;
+        setFormData((previous) => ({
+            ...previous,
+            [name]: value
+        }))
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setError("");
+        setInvalidFields({});
+        setLoading(true);
+        // console.log("FormData: ", formData)
+        // simple validation
+        // if (!formData.email || !formData.password) {
+        //     const errors = {};
+        //     if (!formData.email) errors.email = true;
+        //     if (!formData.password) errors.password = true;
+
+        //     setInvalidFields(errors);
+        //     setError("Please fill in both fields.");
+        //     setLoading(false);
+        //     return;
+        // }
+        // fake login check
+        // if (formData.email === "test@example.com" && formData.password === "123456") {
+        //     alert("✅ Login successful!");
+        //     setFormData({ email: '', password: '' })
+        // } else {
+        //     setInvalidFields({ email: true, password: true });
+        //     setError("Invalid email or password");
+        // }
+        setTimeout(() => {
+            navigate('/dashboard');
+            setLoading(false);
+        }, 10000);
+
+    }
     return (
         <AuthContainer title="Sign In">
             {/* Social Login Buttons */}
+            {error && (
+                <div className="mb-3 text-red-500 text-sm font-medium text-center">
+                    {error}
+                </div>)}
             <div className="space-y-4 mb-6">
                 <button className="btn-secondary w-full justify-center">
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -45,21 +86,27 @@ export default function SignInPage() {
                     <span className="px-4 bg-white text-gray-500">or</span>
                 </div>
             </div>
-
+            {/* {error && (
+                <div className="mb-3 text-red-500 text-sm font-medium text-center">
+                    {error}
+                </div>)} */}
             {/* Email Input */}
-            <div className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                         Email
                     </label>
                     <input
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                        value={formData.email}
+                        onChange={onChangeHandle}
                         placeholder="Enter your email address..."
-                        className="input-field"
+                        className={`input-field pr-12 ${invalidFields.email ? "input-error" : ""}`}
+
                     />
                 </div>
+
 
                 {/* Password Input */}
                 <div>
@@ -69,10 +116,11 @@ export default function SignInPage() {
                     <div className="relative">
                         <input
                             type={showPassword ? 'text' : 'password'}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            name="password"
+                            value={formData.password}
+                            onChange={onChangeHandle}
                             placeholder="Enter your password..."
-                            className="input-field pr-12"
+                            className={`input-field pr-12 ${invalidFields.password ? "input-error" : ""}`}
                         />
                         <button
                             onClick={() => setShowPassword(!showPassword)}
@@ -88,10 +136,15 @@ export default function SignInPage() {
                 </div>
 
                 {/* Login Button */}
-                <button onClick={handleSubmit} className="btn-primary w-full justify-center mt-6">
-                    Login to account
+                <button
+                    type='submit'
+                    className={`btn-primary w-full justify-center mt-6 
+                            ${loading ? "opacity-50 cursor-not-allowed" : ""
+                        }`}
+                >
+                    {loading ? "Loading...." : "Login to account"}
                 </button>
-            </div>
+            </form>
 
             {/* Sign Up Link */}
             <p className="text-center mt-6 text-gray-600">
@@ -101,6 +154,6 @@ export default function SignInPage() {
                 </Link>
             </p>
 
-        </AuthContainer>
+        </AuthContainer >
     );
 }

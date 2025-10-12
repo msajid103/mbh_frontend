@@ -10,10 +10,12 @@ export default function AuthContainer({title, content, children}) {
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
-                    backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=1080&fit=crop')`,                    
-                }} >
+                    backgroundImage: `url('https://images.unsplash.com/photo-1496564203457-11bb12075d90?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1550')`,                    
+                }} 
+                
+                >
               
-                <div className="absolute inset-0 bg-black/40"></div>
+                <div className="absolute inset-0 bg-black/50"></div>
             </div>
             <div className="relative w-full max-w-[647px] bg-white rounded-[20px] shadow-2xl p-12">
                 <div className="flex flex-col items-center mb-8">

@@ -1,5 +1,5 @@
 import React from 'react'
-import logo_jp from "../../assets/logo_jp.jpeg"
+import logo1 from "../../assets/logo1.png"
 
 function Footer() {
   return (
@@ -10,10 +10,11 @@ function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <div className="flex items-center justify-center space-x-2">
                 <img
-                  src={logo_jp}
+                  src={logo1}
                   alt="VAT Buddy Logo"
                   className="w-[76.515625px] h-[40px] object-contain"
                 />
+                MBH
               </div>
             </div>
             <p className="text-sm text-gray-400">
@@ -24,27 +25,27 @@ function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Product</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white">Features</a></li>
-              <li><a href="#" className="hover:text-white">Pricing</a></li>
-              <li><a href="#" className="hover:text-white">Security</a></li>
+              <li><a  className="hover:text-white">Features</a></li>
+              <li><a  className="hover:text-white">Pricing</a></li>
+              <li><a  className="hover:text-white">Security</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-white mb-4">Company</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white">About</a></li>
-              <li><a href="#" className="hover:text-white">Careers</a></li>
-              <li><a href="#" className="hover:text-white">Contact</a></li>
+              <li><a  className="hover:text-white">About</a></li>
+              <li><a  className="hover:text-white">Careers</a></li>
+              <li><a  className="hover:text-white">Contact</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-white mb-4">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white">Privacy</a></li>
-              <li><a href="#" className="hover:text-white">Terms</a></li>
-              <li><a href="#" className="hover:text-white">Cookies</a></li>
+              <li><a  className="hover:text-white">Privacy</a></li>
+              <li><a  className="hover:text-white">Terms</a></li>
+              <li><a  className="hover:text-white">Cookies</a></li>
             </ul>
           </div>
         </div>
