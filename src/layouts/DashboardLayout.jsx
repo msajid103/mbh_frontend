@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  LayoutDashboard, CheckSquare, DollarSign,
+  House , CheckSquare, DollarSign,
   FileText, MessageSquare, BarChart3, Briefcase,
   Settings, HelpCircle, MessageCircle, Users,
-  Globe
+  Globe, Clock
 } from 'lucide-react';
 import Sidebar from '../components/layout/Sidebar';
 import Header from '../components/layout/Header';
@@ -11,12 +11,29 @@ import Breadcrumb from '../components/layout/Breadcrumb';
 import { useLocation } from 'react-router-dom';
 
 const menuItems = [
-  { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
+  { icon: House , label: 'MyBuild', path: '/mybuild' },
   { icon: CheckSquare, label: 'Tasks', path: '/tasks' },
-  { icon: DollarSign, label: 'Finance', path: '/finance' },
+  { 
+    icon: DollarSign, 
+    label: 'Finance', 
+    path: '/finance',
+    subItems: [
+      { label: 'Invoices', path: '/finance/invoices' },
+      { label: 'Expenses', path: '/finance/expenses' }
+    ]
+  },
   { icon: FileText, label: 'Documents', path: '/documents' },
   { icon: MessageSquare, label: 'Messages', path: '/messages' },
   { icon: BarChart3, label: 'Reports', path: '/reports' },
+  { 
+    icon: Clock, 
+    label: 'Timeline', 
+    path: '/timeline',
+    subItems: [
+      { label: 'Schedule', path: '/timeline/schedule' },
+      { label: 'Calendar', path: '/timeline/calendar' }
+    ]
+  },
   { icon: Briefcase, label: 'Project management', path: '/projects' },
   { icon: Settings, label: 'Settings', path: '/settings' },
 ];
@@ -28,31 +45,64 @@ const bottomItems = [
   { icon: Globe, label: 'Community Forum', path: '/community' },
 ];
 
-export default function DashboardLayout({ children, breadcrumbs }) {
+export default function DashboardLayout({ children}) {
   const location = useLocation();
-  const allItems = [...menuItems, ...bottomItems];
-  const activeItem = allItems.find(item => location.pathname.startsWith(item.path));
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+  // Get all items including sub-items for matching
+  const getAllItems = () => {
+    const items = [];
+    [...menuItems, ...bottomItems].forEach(item => {
+      items.push(item);
+      if (item.subItems) {
+        items.push(...item.subItems);
+      }
+    });
+    return items;
+  };
+
+  const allItems = getAllItems();
+  const activeItem = allItems.find(item => location.pathname.startsWith(item.path)) || menuItems[0];
+
+  // Close sidebar when route changes on mobile
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [location.pathname]);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
-      {/* Sidebar - Fixed */}
-      <Sidebar menuItems={menuItems} bottomItems={bottomItems} />
+      {/* Sidebar */}
+      <Sidebar 
+        menuItems={menuItems} 
+        bottomItems={bottomItems}
+        isOpen={isSidebarOpen}
+        setIsOpen={setIsSidebarOpen}
+      />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header - Fixed */}
-        <Header title={activeItem.label} />
+      <div className="flex-1 flex flex-col overflow-hidden w-full lg:w-auto">
+        {/* Header */}
+        <Header 
+          title={activeItem.label} 
+          toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        />
 
-        {/* Breadcrumb - Fixed (if provided) */}
-        {breadcrumbs && breadcrumbs.length > 0 && (
-          <div className="bg-white p-2">
-            <Breadcrumb items={breadcrumbs} />
-          </div>
-        )}
 
         {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto overflow-x-hidden">
-          <div className="container mx-auto px-1 py-4">
+          <div className="container mx-auto px-4 sm:px-6 py-4">
             {children}
           </div>
         </main>

@@ -1,16 +1,16 @@
 import React from 'react';
-import NavBar from '../components/LangingPage/NavBar';
-import Footer from '../components/LangingPage/Footer';
 import HeroSection from '../components/LangingPage/HeroSection';
 import FeatueSection from '../components/LangingPage/FeatueSection';
 import StatsSection from '../components/LangingPage/StatsSection';
+import NavBar from '../components/common/NavBar';
+import Footer from '../components/common/Footer';
 
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation    */}
-      <NavBar />
+      <NavBar path={"/signin"}  content={"Sign In"}/>
 
       {/* Hero section */}
       <HeroSection />

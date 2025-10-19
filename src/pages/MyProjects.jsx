@@ -50,13 +50,11 @@ const projects = [
     },
 ];
 
-const breadcrumbs = [
-  { label: 'My Projects', path: '/dashboard' },
-];
+
 
 export default function MyProjects() {
     return (
-        <DashboardLayout breadcrumbs={breadcrumbs}>
+        <DashboardLayout>
             <div className="flex gap-6 flex-wrap">
           
                 {projects.map((project) => (
