@@ -98,10 +98,23 @@ export default function DashboardLayout({ children }) {
         />
 
 
+   
         {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto overflow-x-hidden">
           <div className="mx-auto px-4 sm:px-6 py-4">
             {children}
+          </div>
+
+       
+          <div className="fixed bottom-6 right-6 z-50">
+            <button
+              className="btn-primary rounded-full"
+              onClick={() => {
+                console.log('Help button clicked');          
+              }}
+            >
+              Help
+            </button>
           </div>
         </main>
       </div>
