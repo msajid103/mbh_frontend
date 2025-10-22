@@ -1,110 +1,7 @@
 import React, { useState } from 'react';
 import { Search, List, LayoutGrid, Plus, CheckCircle } from 'lucide-react';
 import DashboardLayout from '../layouts/DashboardLayout';
-
-// Dummy data
-const dummyTasks = [
-    {
-        id: 1,
-        title: 'Instruct us - Initial project briefing',
-        subtasks: '3/5 subtasks completed',
-        tags: ['planning', 'initial'],
-        assignee: { name: 'John Doe', avatar: 'JD', color: 'bg-red-500' },
-        date: 'Jan 12, 2024',
-        priority: 'high',
-        status: 'Completed'
-    },
-    {
-        id: 2,
-        title: 'Site survey and documentation',
-        subtasks: '3/5 subtasks completed',
-        tags: ['survey', 'planning'],
-        assignee: { name: 'Sarah Smith', avatar: 'SS', color: 'bg-blue-500' },
-        date: 'Feb 10, 2024',
-        priority: 'high',
-        status: 'Completed'
-    },
-    {
-        id: 3,
-        title: 'Obtain building permits and approvals',
-        subtasks: '2/4 subtasks completed',
-        tags: ['legal', 'permits'],
-        assignee: { name: 'Mike Johnson', avatar: 'MJ', color: 'bg-green-500' },
-        date: 'Feb 28, 2024',
-        priority: 'high',
-        status: 'Completed'
-    },
-    {
-        id: 4,
-        title: 'Design concept approval',
-        subtasks: '1/3 subtasks completed',
-        tags: ['design', 'approval'],
-        assignee: { name: 'Emma Wilson', avatar: 'EW', color: 'bg-purple-500' },
-        date: 'Mar 15, 2024',
-        priority: 'medium',
-        status: 'Completed'
-    },
-    {
-        id: 5,
-        title: 'Groundwork and foundation preparation',
-        subtasks: '2/4 subtasks completed',
-        tags: ['construction', 'foundation'],
-        assignee: { name: 'David Brown', avatar: 'DB', color: 'bg-indigo-500' },
-        date: 'Apr 20, 2024',
-        priority: 'high',
-        status: 'In Progress'
-    },
-    {
-        id: 6,
-        title: 'Structural steel installation',
-        subtasks: '1/4 subtasks completed',
-        tags: ['construction', 'structural'],
-        assignee: { name: 'Lisa Garcia', avatar: 'LG', color: 'bg-pink-500' },
-        date: 'May 10, 2024',
-        priority: 'high',
-        status: 'In Progress'
-    },
-    {
-        id: 7,
-        title: 'Brickwork and masonry',
-        subtasks: '0/3 subtasks completed',
-        tags: ['construction', 'masonry'],
-        assignee: { name: 'Tom Anderson', avatar: 'TA', color: 'bg-yellow-600' },
-        date: 'Jun 30, 2024',
-        priority: 'medium',
-        status: 'Pending'
-    },
-    {
-        id: 8,
-        title: 'Electrical rough-in installation',
-        subtasks: '0/5 subtasks completed',
-        tags: ['electrical', 'construction'],
-        assignee: { name: 'Anna Martinez', avatar: 'AM', color: 'bg-teal-500' },
-        date: 'Jul 15, 2024',
-        priority: 'high',
-        status: 'Pending'
-    },
-    {
-        id: 9,
-        title: 'Plumbing installation',
-        subtasks: '0/4 subtasks completed',
-        tags: ['plumbing', 'construction'],
-        assignee: { name: 'Chris Lee', avatar: 'CL', color: 'bg-orange-500' },
-        date: 'Jul 25, 2024',
-        priority: 'high',
-        status: 'Pending'
-    },
-    {
-        id: 10,
-        title: 'Roof installation and waterproofing',
-        subtasks: '0/3 subtasks completed',
-        tags: ['roofing', 'construction'],
-        assignee: { name: 'Rachel Kim', avatar: 'RK', color: 'bg-cyan-500' },
-        date: 'Aug 15, 2024',
-        priority: 'high',
-        status: 'Pending'
-    }
-];
+import { useSelector } from 'react-redux';
 
 const statusColors = {
     'Completed': 'bg-green-100 text-green-700',
@@ -119,18 +16,20 @@ const priorityColors = {
 };
 
 export default function TaskManagementPage() {
+    const tasks = useSelector(store => store.tasks)
+
     const [viewMode, setViewMode] = useState('list');
     const [activeFilter, setActiveFilter] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
 
     const statusCounts = {
-        'Total Tasks': dummyTasks.length,
-        'In Progress': dummyTasks.filter(t => t.status === 'In Progress').length,
-        'Pending': dummyTasks.filter(t => t.status === 'Pending').length,
-        'Completed': dummyTasks.filter(t => t.status === 'Completed').length
+        'Total Tasks': tasks.length,
+        'In Progress': tasks.filter(t => t.status === 'In Progress').length,
+        'Pending': tasks.filter(t => t.status === 'Pending').length,
+        'Completed': tasks.filter(t => t.status === 'Completed').length
     };
 
-    const filteredTasks = dummyTasks.filter(task => {
+    const filteredTasks = tasks.filter(task => {
         const matchesFilter = activeFilter === 'All' || task.status === activeFilter;
         const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             task.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -145,10 +44,10 @@ export default function TaskManagementPage() {
                     <div className="flex items-center justify-between mb-6">
                         <p className="text-gray-600 text-sm">Manage and track all project tasks</p>
                         <div className="flex items-center  gap-3">
-                            <div className='flex items-center  gap-3 bg-white border'>
+                            <div className='flex items-center rounded-lg gap-3 bg-white '>
                                 <button
                                     onClick={() => setViewMode('list')}
-                                    className={`p-2 rounded-lg transition-colors ${viewMode === 'list'
+                                    className={`p-2 flex gap-2 rounded-lg transition-colors ${viewMode === 'list'
                                         ? 'bg-blue-600 text-white'
                                         : 'bg-white text-gray-600 hover:bg-gray-100'
                                         }`}
@@ -157,7 +56,7 @@ export default function TaskManagementPage() {
                                 </button>
                                 <button
                                     onClick={() => setViewMode('kanban')}
-                                    className={`p-2 rounded-lg transition-colors ${viewMode === 'kanban'
+                                    className={`p-2 flex gap-2 rounded-lg transition-colors ${viewMode === 'kanban'
                                         ? 'bg-blue-600 text-white'
                                         : 'bg-white text-gray-600 hover:bg-gray-100'
                                         }`}

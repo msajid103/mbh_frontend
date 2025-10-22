@@ -1,14 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-
+import { profile } from "../../../data.json"
 
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        user: {
-            "id": "001",
-            "fullName": "Martyn"
-        },
+        user: profile,
         token: localStorage.getItem('token'),
         isAuthenticated: false,
         loading: false

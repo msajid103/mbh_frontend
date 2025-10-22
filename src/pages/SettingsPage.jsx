@@ -12,10 +12,7 @@ const tabs = [
   { id: 'security', label: 'Security', icon: Shield },
 ];
 
-const breadcrumbs = [
-  { label: 'Dashboard', path: '/dashboard' },
-  { label: 'Settings', path: '/settings' },
-];
+
 
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState('personal');
@@ -68,7 +65,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <DashboardLayout breadcrumbs={breadcrumbs}>
+    <DashboardLayout>
       <div className="max-w-5xl">
         {/* Page Title */}
         <div className="mb-6">
