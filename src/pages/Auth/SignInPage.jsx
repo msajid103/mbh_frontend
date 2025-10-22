@@ -51,7 +51,7 @@ export default function SignInPage() {
         setTimeout(() => {
             navigate('/mybuild');
             setLoading(false);
-        }, 10000);
+        }, 1000);
 
     }
     return (

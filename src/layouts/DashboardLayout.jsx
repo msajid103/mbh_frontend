@@ -1,54 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import {
-  House , CheckSquare, DollarSign,
+  House, CheckSquare, DollarSign,
   FileText, MessageSquare, BarChart3, Briefcase,
   Settings, HelpCircle, MessageCircle, Users,
   Globe, Clock
 } from 'lucide-react';
 import Sidebar from '../components/layout/Sidebar';
 import Header from '../components/layout/Header';
-import Breadcrumb from '../components/layout/Breadcrumb';
 import { useLocation } from 'react-router-dom';
 
 const menuItems = [
-  { icon: House , label: 'MyBuild', path: '/mybuild' },
+  { icon: House, label: 'MyBuild', path: '/mybuild' },
   { icon: CheckSquare, label: 'Tasks', path: '/tasks' },
-  { 
-    icon: DollarSign, 
-    label: 'Finance', 
+  {
+    icon: DollarSign,
+    label: 'Finance',
     path: '/finance',
     subItems: [
-      { label: 'Invoices', path: '/finance/invoices' },
-      { label: 'Expenses', path: '/finance/expenses' }
+      { label: 'Dashboard', path: '/finance/dashboard' },
+      { label: 'Cost Management', path: '/finance/cost-management' }
+    ]
+  },
+  {
+    icon: Clock,
+    label: 'Timeline',
+    path: '/timeline',
+    subItems: [
+      { label: 'Milestones', path: '/timeline/milestones' },
+      { label: 'Scheduling', path: '/timeline/Scheduling' }
     ]
   },
   { icon: FileText, label: 'Documents', path: '/documents' },
   { icon: MessageSquare, label: 'Messages', path: '/messages' },
   { icon: BarChart3, label: 'Reports', path: '/reports' },
-  { 
-    icon: Clock, 
-    label: 'Timeline', 
-    path: '/timeline',
-    subItems: [
-      { label: 'Schedule', path: '/timeline/schedule' },
-      { label: 'Calendar', path: '/timeline/calendar' }
-    ]
-  },
-  { icon: Briefcase, label: 'Project management', path: '/projects' },
-  { icon: Settings, label: 'Settings', path: '/settings' },
+  { icon: Users, label: 'Team', path: '/team' },
+
 ];
 
 const bottomItems = [
   { icon: HelpCircle, label: 'Help Centre', path: '/help' },
-  { icon: Users, label: 'Team', path: '/team' },
   { icon: Briefcase, label: 'Consultant Hub', path: '/consultant' },
   { icon: Globe, label: 'Community Forum', path: '/community' },
 ];
 
-export default function DashboardLayout({ children}) {
+export default function DashboardLayout({ children }) {
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
+
   // Get all items including sub-items for matching
   const getAllItems = () => {
     const items = [];
@@ -84,8 +82,8 @@ export default function DashboardLayout({ children}) {
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
       {/* Sidebar */}
-      <Sidebar 
-        menuItems={menuItems} 
+      <Sidebar
+        menuItems={menuItems}
         bottomItems={bottomItems}
         isOpen={isSidebarOpen}
         setIsOpen={setIsSidebarOpen}
@@ -94,15 +92,15 @@ export default function DashboardLayout({ children}) {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden w-full lg:w-auto">
         {/* Header */}
-        <Header 
-          title={activeItem.label} 
+        <Header
+          title={activeItem.label}
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
         />
 
 
         {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto overflow-x-hidden">
-          <div className="container mx-auto px-4 sm:px-6 py-4">
+          <div className="mx-auto px-4 sm:px-6 py-4">
             {children}
           </div>
         </main>

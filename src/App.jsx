@@ -12,6 +12,8 @@ import ReportsPage from "./pages/ReportsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import SettingsPage from "./pages/SettingsPage";
 import CommingSoon from "./pages/CommingSoon";
+import FrogotPasswordPage from "./pages/Auth/ForgotPasswordPage";
+import TaskManagementPage from "./pages/TaskManagementPage";
 function App() {
 
   return (
@@ -19,9 +21,10 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<SignInPage />} />
+        <Route path="/forgot-password" element={<FrogotPasswordPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/mybuild" element={<MyProjects />} />
-        <Route path="/tasks" element={<TaskPage />} />
+        <Route path="/tasks" element={<TaskManagementPage />} />
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/documents" element={<DocumentsPage />} />
         <Route path="/messages" element={<MessagesPage />} />

@@ -27,7 +27,7 @@ export default function Sidebar({ menuItems, bottomItems, isOpen, setIsOpen }) {
     <>
       {/* Mobile Overlay */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
@@ -41,13 +41,13 @@ export default function Sidebar({ menuItems, bottomItems, isOpen, setIsOpen }) {
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         {/* Logo & Close Button */}
-        <div className="px-6 py-3 border-b border-gray-200 flex items-center justify-between">
+        <div className="px-6 py-3 flex items-center justify-between">
           <img
             src={logo}
             alt="VAT Buddy Logo"
             className="w-[79.515625px] h-[44px] object-contain"
           />
-          <button 
+          <button
             onClick={() => setIsOpen(false)}
             className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
           >
@@ -65,11 +65,10 @@ export default function Sidebar({ menuItems, bottomItems, isOpen, setIsOpen }) {
                   <Link
                     to={item.path}
                     onClick={closeMobileSidebar}
-                    className={`flex-1 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-                      isActive(item.path)
+                    className={`flex-1 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive(item.path)
                         ? 'bg-blue-600 text-white'
                         : 'text-gray-700 hover:bg-gray-100'
-                    }`}
+                      }`}
                   >
                     <item.icon className="w-5 h-5" />
                     <span className="text-sm font-medium">{item.label}</span>
@@ -87,7 +86,7 @@ export default function Sidebar({ menuItems, bottomItems, isOpen, setIsOpen }) {
                     </button>
                   )}
                 </div>
-                
+
                 {/* Sub Items */}
                 {item.subItems && expandedItems[item.label] && (
                   <div className="ml-8 mt-1 space-y-1">
@@ -96,11 +95,10 @@ export default function Sidebar({ menuItems, bottomItems, isOpen, setIsOpen }) {
                         key={subItem.path}
                         to={subItem.path}
                         onClick={closeMobileSidebar}
-                        className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-sm ${
-                          isActive(subItem.path)
+                        className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-sm ${isActive(subItem.path)
                             ? 'bg-blue-100 text-blue-600'
                             : 'text-gray-600 hover:bg-gray-50'
-                        }`}
+                          }`}
                       >
                         {subItem.label}
                       </Link>
@@ -123,11 +121,10 @@ export default function Sidebar({ menuItems, bottomItems, isOpen, setIsOpen }) {
                 key={item.path}
                 to={item.path}
                 onClick={closeMobileSidebar}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-                  isActive(item.path)
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive(item.path)
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-700 hover:bg-gray-100'
-                }`}
+                  }`}
               >
                 <item.icon className="w-5 h-5" />
                 <span className="text-sm font-medium">{item.label}</span>
@@ -161,16 +158,16 @@ export default function Sidebar({ menuItems, bottomItems, isOpen, setIsOpen }) {
         </nav>
 
         {/* Logout Button */}
-        <div className="p-4 border-t border-gray-200">
-          <Link 
-            to="/" 
+        {/* <div className="p-4 border-t border-gray-200"> */}
+          <Link
+            to="/"
             onClick={closeMobileSidebar}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 w-full transition-colors"
+            className="btn-secondary m-4"
           >
             <LogOut className="w-5 h-5" />
             <span className="text-sm font-medium">Logout</span>
           </Link>
-        </div>
+        {/* </div> */}
       </div>
     </>
   );

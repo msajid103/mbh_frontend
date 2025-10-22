@@ -35,7 +35,7 @@ export default function SignUpPage() {
         console.log("name", formData.full_name);
 
 
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         navigate('/mybuild');
 
         setFormData({
