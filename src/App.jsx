@@ -4,7 +4,6 @@ import SignUpPage from "./pages/Auth/SignUpPage";
 import SignInPage from "./pages/Auth/SignInPage";
 import './App.css';
 import MyProjects from "./pages/MyProjects";
-import TaskPage from "./pages/TaskPage";
 import FinancePage from "./pages/FinancePage";
 import DocumentsPage from "./pages/DocumentsPage";
 import MessagesPage from "./pages/MessagesPage";
