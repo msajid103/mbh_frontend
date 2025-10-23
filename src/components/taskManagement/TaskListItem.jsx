@@ -1,5 +1,7 @@
 import { CheckCircle, Pencil, Search, Trash2 } from 'lucide-react'
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { taskAction } from '../../store/slices/tasksSlice';
 
 
 const priorityColors = {
@@ -15,6 +17,7 @@ const statusColors = {
 };
 
 const TaskListItem = ({ task }) => {
+    const dispatch = useDispatch()
     return (
         <tr
             key={task.id}
@@ -127,10 +130,12 @@ const TaskListItem = ({ task }) => {
                 <button className="p-1 border-2 rounded-lg border-blue-300 flex items-center justify-center">
                     <Search className='text-blue-600' />
                 </button>
-                <button className="p-1 border-2 rounded-lg border-green-300 flex items-center justify-center">
+                <button 
+                className="p-1 border-2 rounded-lg border-green-300 flex items-center justify-center">
                     <Pencil className='text-green-600' />
                 </button>
-                <button className="p-1 border-2 rounded-lg border-red-300 flex items-center justify-center">
+                <button onClick= {()=> dispatch(taskAction.deleteTask(task.id))} 
+                className="p-1 border-2 rounded-lg border-red-300 flex items-center cursor-pointer justify-center">
                     <Trash2 className='text-red-600' />
                 </button>
 
