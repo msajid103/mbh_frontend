@@ -16,7 +16,7 @@ const statusColors = {
     'Pending': 'bg-gray-100 text-gray-700'
 };
 
-const TaskListItem = ({ task }) => {
+const TaskList = ({ task }) => {
     const dispatch = useDispatch()
     return (
         <tr
@@ -144,4 +144,4 @@ const TaskListItem = ({ task }) => {
     )
 }
 
-export default TaskListItem
+export default TaskList

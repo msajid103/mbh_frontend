@@ -1,8 +1,8 @@
 
 import { Search } from 'lucide-react';
 import { useSelector } from 'react-redux';
-import TaskListItem from './TaskListitem';
 import { selectFilteredTasks } from '../../store/slices/tasksSlice';
+import TaskList from './TaskList';
 
 
 const TaskTable = () => {
@@ -37,7 +37,7 @@ const TaskTable = () => {
                         {/* Table Body */}
                         <tbody className="divide-y divide-gray-200">
                             {filteredTasks.map((task) => (
-                                <TaskListItem key={task.id} task={task} />
+                                <TaskList key={task.id} task={task} />
                             ))}
                         </tbody>
                     </table>
