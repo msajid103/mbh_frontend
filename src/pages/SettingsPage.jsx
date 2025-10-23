@@ -66,7 +66,7 @@ export default function SettingsPage() {
 
   return (
     <DashboardLayout>
-      <div className="max-w-5xl">
+      <div className="max-w-[60vw]">
         {/* Page Title */}
         <div className="mb-6">
           <p className="text-gray-600">Manage your account settings and preferences</p>
@@ -74,7 +74,7 @@ export default function SettingsPage() {
 
         {/* Tabs Navigation */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
-          <div className="flex gap-2 p-2 overflow-x-auto">
+          <div className="flex justify-around p-2 overflow-x-auto">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -95,7 +95,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Tab Content */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+        <div className="bg-white rounded-xl shadow-sm border overflow-x-auto border-gray-200 p-8">
           {renderTabContent()}
 
           {/* Action Buttons */}

@@ -13,6 +13,7 @@ import SettingsPage from "./pages/SettingsPage";
 import CommingSoon from "./pages/CommingSoon";
 import FrogotPasswordPage from "./pages/Auth/ForgotPasswordPage";
 import TaskManagementPage from "./pages/TaskManagementPage";
+import NotificationPage from "./pages/NotificationPage";
 function App() {
 
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/tasks" element={<TaskManagementPage />} />
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/documents" element={<DocumentsPage />} />
+        <Route path="/notifications" element={<NotificationPage />} />
         <Route path="/messages" element={<MessagesPage />} />
         <Route path="/reports" element={<ReportsPage />} />
         <Route path="/projects" element={<ProjectsPage />} />

@@ -1,10 +1,13 @@
 import React from 'react';
 import { Bell, Menu, Settings } from 'lucide-react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header({ title, toggleSidebar }) {
   const { user } = useSelector(store => store.auth)
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <header className="bg-white border-b border-gray-200 px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
@@ -22,12 +25,17 @@ export default function Header({ title, toggleSidebar }) {
 
       {/* Right Side */}
       <div className="flex items-center gap-2 sm:gap-4">
-        <Link to="/settings">
+        <Link to="/settings" className={`relative p-3 text-gray-600 hover:bg-blue-200 rounded-full transition-colors  ${isActive('/settings')
+          && 'bg-blue-200'}
+          `}>
           <Settings />
         </Link>
         {/* Notification Bell */}
-        <Link className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
-          <Bell className="w-5 h-5 sm:w-6 sm:h-6" />
+        <Link to="/notifications" className={`relative p-3 text-gray-600 hover:bg-blue-200 rounded-full transition-colors  ${isActive('/notifications')
+          && 'bg-blue-200'}
+          `}>
+          <Bell className={`w-5 h-5 sm:w-6 sm:h-6  ${isActive('/notifications')
+            && 'text-blue-800'}`} />
           <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
         </Link>
 
