@@ -128,15 +128,15 @@ const TaskList = ({ task }) => {
             {/* Actions */}
             <td className="px-4 py-4 flex gap-2">
                 <button className="p-1 border-2 rounded-lg border-blue-300 flex items-center justify-center">
-                    <Search className='text-blue-600' />
+                    <Search className='text-blue-600'  size={16}/>
                 </button>
                 <button 
                 className="p-1 border-2 rounded-lg border-green-300 flex items-center justify-center">
-                    <Pencil className='text-green-600' />
+                    <Pencil className='text-green-600' size={16} />
                 </button>
                 <button onClick= {()=> dispatch(taskAction.deleteTask(task.id))} 
                 className="p-1 border-2 rounded-lg border-red-300 flex items-center cursor-pointer justify-center">
-                    <Trash2 className='text-red-600' />
+                    <Trash2 className='text-red-600' size={16} />
                 </button>
 
             </td>

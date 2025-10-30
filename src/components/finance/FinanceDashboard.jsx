@@ -3,6 +3,9 @@ import FinanceHeaderCards from "./FinanceHeaderCards";
 import TopActions from "./TopActions";
 import BudgetTabs from "./BudgetTabs";
 import BudgetBreakdownTable from "./BudgetBreakdownTable";
+import VariationOrders from "./VariationOrders ";
+import ProgressPayments from "./ProgressPayments";
+import CashflowAnalysis from "./CashflowAnalysis";
 
 const FinanceDashboard = () => {
   const [activeTab, setActiveTab] = useState("Budget Tracking");
@@ -29,18 +32,9 @@ const FinanceDashboard = () => {
 
       {/* Tab Content */}
       {activeTab === "Budget Tracking" && <BudgetBreakdownTable />}
-
-      {activeTab === "Progress Payments" && (
-        <div className="bg-white p-6 rounded-2xl border shadow-sm text-sm text-gray-600">
-          Progress Payments — coming soon.
-        </div>
-      )}
-
-      {activeTab === "Cashflow" && (
-        <div className="bg-white p-6 rounded-2xl border shadow-sm text-sm text-gray-600">
-          Cashflow chart + editable table will be added in the next step.
-        </div>
-      )}
+      {activeTab === "Variations" && <VariationOrders />}
+      {activeTab === "Progress Payments" && <ProgressPayments/>}
+      {activeTab === "Cashflow" && <CashflowAnalysis/>}
     </div>
   );
 };
