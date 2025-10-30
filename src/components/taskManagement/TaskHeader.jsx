@@ -13,9 +13,9 @@ const TaskHeader = () => {
 
 
     return (
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex gap-4 items-center justify-between mb-6 flex-wrap">
             <p className="text-gray-600 text-sm">Manage and track all project tasks</p>
-            <div className="flex items-center  gap-3">
+            <div className="flex items-center flex-wrap gap-3">
                 <div className='flex items-center rounded-lg gap-3 bg-white '>
                     <button
                         onClick={() => setViewMode('list')}

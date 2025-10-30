@@ -7,24 +7,24 @@ import {
 } from 'lucide-react';
 import Sidebar from '../components/layout/Sidebar';
 import Header from '../components/layout/Header';
-import { useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 const menuItems = [
-  { icon: House, label: 'MyBuild', path: '/mybuild' },
+  { icon: House, label: 'MyBuild', path: '/' },
   { icon: CheckSquare, label: 'Tasks', path: '/tasks' },
   {
     icon: DollarSign,
     label: 'Finance',
-    path: '/finance',
+    path: '/finance/dashboard', // default child page
     subItems: [
       { label: 'Dashboard', path: '/finance/dashboard' },
-      { label: 'Cost Management', path: '/finance/cost-management' }
+      { label: 'Cost Management', path: '/finance/costmanagement' }
     ]
   },
   {
     icon: Clock,
     label: 'Timeline',
-    path: '/timeline',
+    path: '/timeline/milestones',
     subItems: [
       { label: 'Milestones', path: '/timeline/milestones' },
       { label: 'Scheduling', path: '/timeline/Scheduling' }
@@ -98,19 +98,19 @@ export default function DashboardLayout({ children }) {
         />
 
 
-   
+
         {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto overflow-x-hidden">
-          <div className="max-w-[80vw] px-4 sm:px-6 py-4">
-            {children}
+          <div className="max-w-full px-4 py-4 lg:max-w-[80vw] ">
+            <Outlet />
           </div>
 
-       
+
           <div className="fixed bottom-6 right-6 z-50">
             <button
               className="btn-primary rounded-full"
               onClick={() => {
-                console.log('Help button clicked');          
+                console.log('Help button clicked');
               }}
             >
               Help

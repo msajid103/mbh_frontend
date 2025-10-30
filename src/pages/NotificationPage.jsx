@@ -14,7 +14,6 @@ import {
     Trash2,
     Funnel,
 } from 'lucide-react';
-import DashboardLayout from '../layouts/DashboardLayout';
 
 // Dummy notifications data
 const dummyNotifications = [
@@ -131,10 +130,10 @@ const NotificationPage = () => {
     const unreadCount = notifications.filter(n => !n.isRead).length;
 
     return (
-        <DashboardLayout>
+        <>
 
             {/* Header */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-wrap gap-4 items-center justify-between mb-6">
                 <p className="text-gray-600 text-sm">You have {unreadCount} unread notification{unreadCount !== 1 ? 's' : ''}</p>
                 {unreadCount > 0 && (
                     <button
@@ -148,8 +147,8 @@ const NotificationPage = () => {
             </div>
 
             {/* Search */}
-            <div className="border-2 flex items-center rounded-xl border-gray-200 border-gray-200">
-                <div className="relative p-4 w-[80%]">
+            <div className="border-2 flex  flex-wrap gap-4 items-center rounded-xl border-gray-200 border-gray-200">
+                <div className="relative p-4 w-full sm:w-[80%]">
                     <Search className="absolute left-7 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                         type="text"
@@ -159,8 +158,8 @@ const NotificationPage = () => {
                         className="w-full  bg-gray-200 pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                 </div>
-                <div className="w-[18%] flex items-center gap-4">   
-                    <Funnel className='text-gray-400'/>                
+                <div className="p-4 w-full sm:w-[18%] flex items-center gap-4">
+                    <Funnel className='text-gray-400' />
                     <select
                         id="project"
                         value={selectedProject}
@@ -173,37 +172,34 @@ const NotificationPage = () => {
                                 {project}
                             </option>
                         ))}
-                    </select>                  
+                    </select>
                 </div>
             </div>
 
             {/* Category Tabs */}
-            <div className="border-b mt-4 bg-gray-300 rounded-full border-gray-200">
-                <div className="flex justify-between px-2">
+            <div className="border-b mt-4 py-2 bg-gray-100 border-gray-200 rounded-lg lg:rounded-full">
+                <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-between gap-2 px-2">
                     {Object.entries(categoryConfig).map(([key, { label, count }]) => (
                         <button
                             key={key}
                             onClick={() => setActiveCategory(key)}
-                            className={`px-20 ${activeCategory === key
-                                ? ' rounded-full btn-secondary '
-                                : 'border-transparent text-gray-700'
-                                }`}
+                            className={`px-4 py-2 rounded-lg text-sm text-gray-700 font-medium transition-all duration-200 ${activeCategory === key
+                                    ? 'bg-white lg:rounded-full shadow-sm'
+                                    : ' hover:bg-gray-200 rounded-full'
+                                } lg:px-24`}
                         >
-
-                            <span>{label}({count})</span>
-
-
+                            {label} ({count})
                         </button>
                     ))}
                 </div>
             </div>
 
             {/* Notifications List */}
-            <div className="">
+           
                 {filteredNotifications.map((notification) => (
                     <div
                         key={notification.id}
-                        className={`p-6 my-6 flex border-2  rounded-xl bg-white items-start justify-between 
+                        className={`p-6 my-6 flex flex-wrap gap-4 border-2  rounded-xl bg-white items-start justify-between 
                             ${!notification.isRead ? 'border-l-5 border-blue-500' : 'border-gray-200 '
                             }`}
                     >
@@ -247,7 +243,7 @@ const NotificationPage = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+          
 
             {/* Empty State */}
             {filteredNotifications.length === 0 && (
@@ -260,7 +256,7 @@ const NotificationPage = () => {
                 </div>
             )}
 
-        </DashboardLayout>
+        </>
     );
 };
 

@@ -7,11 +7,11 @@ import TaskFilter from '../components/taskManagement/TaskFilter';
 export default function TaskManagementPage() {   
 
     return (
-        <DashboardLayout>
+        <>
             <TaskHeader />
             <TaskCard />
             <TaskFilter />
             <TaskTable />
-        </DashboardLayout>
+        </>
     );
 }

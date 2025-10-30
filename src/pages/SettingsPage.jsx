@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { User,Bell, Shield, Upload, Save, X, Globe } from 'lucide-react';
-import DashboardLayout from '../layouts/DashboardLayout';
+import { User,Bell, Shield, Save, X, Globe } from 'lucide-react';
 import PersonalInfo from '../components/settings/PersonalInfo';
 import General from '../components/settings/General';
 import Notifications from '../components/settings/Notifications';
@@ -65,8 +64,8 @@ export default function SettingsPage() {
   };
 
   return (
-    <DashboardLayout>
-      <div className="max-w-[60vw]">
+  
+      <div className="">
         {/* Page Title */}
         <div className="mb-6">
           <p className="text-gray-600">Manage your account settings and preferences</p>
@@ -74,7 +73,7 @@ export default function SettingsPage() {
 
         {/* Tabs Navigation */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
-          <div className="flex justify-around p-2 overflow-x-auto">
+          <div className="flex  flex-wrap justify-around p-2">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -113,6 +112,6 @@ export default function SettingsPage() {
           )}
         </div>
       </div>
-    </DashboardLayout>
+  
   );
 }
