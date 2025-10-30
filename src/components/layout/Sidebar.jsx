@@ -186,7 +186,7 @@ const activeParent =
 
         {/* Logout */}
         <Link
-          to="/"
+          to="/landing"
           onClick={closeMobileSidebar}
           className="btn-secondary m-4"
         >

@@ -36,7 +36,7 @@ export default function SignUpPage() {
 
 
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        navigate('/mybuild');
+        navigate('/');
 
         setFormData({
             full_name: '',

@@ -49,7 +49,7 @@ export default function SignInPage() {
         //     setError("Invalid email or password");
         // }
         setTimeout(() => {
-            navigate('/mybuild');
+            navigate('/');
             setLoading(false);
         }, 1000);
 

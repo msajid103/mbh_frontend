@@ -1,7 +1,7 @@
 import React from 'react';
-import HeroSection from '../components/LangingPage/HeroSection';
-import FeatueSection from '../components/LangingPage/FeatueSection';
-import StatsSection from '../components/LangingPage/StatsSection';
+import HeroSection from '../components/LandingPage/HeroSection';
+import FeatueSection from '../components/LandingPage/FeatueSection';
+import StatsSection from '../components/LandingPage/StatsSection';
 import NavBar from '../components/common/NavBar';
 import Footer from '../components/common/Footer';
 
