@@ -471,7 +471,6 @@ const FinanceDashboardPage = () => {
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Financial Dashboard</h1>
             <p className="text-gray-500 text-sm mt-1">
               Track budgets, costs, variations, and financial performance
             </p>

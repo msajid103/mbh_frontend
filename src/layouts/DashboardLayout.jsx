@@ -14,7 +14,7 @@ const menuItems = [
   { icon: CheckSquare, label: 'Tasks', path: '/tasks' },
   {
     icon: DollarSign,
-    label: 'Finance',
+    label: 'Financial Dashboard',
     path: '/finance/dashboard', // default child page
     subItems: [
       { label: 'Dashboard', path: '/finance/dashboard' },
@@ -43,14 +43,19 @@ const bottomItems = [
   { icon: Globe, label: 'Community Forum', path: '/community' },
 ];
 
-export default function DashboardLayout({ children }) {
+const otherItems =  [
+  { label: 'Notifications', path: '/notifications' },
+  {  label: 'Settings', path: '/settings' }
+];
+
+export default function DashboardLayout() {
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Get all items including sub-items for matching
   const getAllItems = () => {
     const items = [];
-    [...menuItems, ...bottomItems].forEach(item => {
+    [...menuItems, ...bottomItems, ...otherItems ].forEach(item => {
       items.push(item);
       if (item.subItems) {
         items.push(...item.subItems);
@@ -60,7 +65,8 @@ export default function DashboardLayout({ children }) {
   };
 
   const allItems = getAllItems();
-  const activeItem = allItems.find(item => location.pathname.startsWith(item.path)) || menuItems[0];
+  const activeItem = allItems.find(item => location.pathname === item.path) || menuItems[0];
+  console.log("path name",allItems[1].path, "localPath",location.pathname)
 
   // Close sidebar when route changes on mobile
   useEffect(() => {
