@@ -25,6 +25,7 @@ import DocumentsPage from "./pages/DocumentsPage";
 import MessagesPage from "./pages/MessagesPage";
 import ReportsPage from "./pages/ReportsPage";
 import CommingSoon from "./pages/CommingSoon";
+import TeamContactsPage from "./pages/TeamContactsPage";
 
 
 
@@ -65,7 +66,7 @@ function App() {
           <Route path="/documents" element={<DocumentsPage />} />
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/reports" element={<ReportsPage />} />
-          <Route path="/team" element={<CommingSoon />} />
+          <Route path="/team" element={<TeamContactsPage />} />
           <Route path="/help" element={<CommingSoon />} />
           <Route path="/consultant" element={<CommingSoon />} />
           <Route path="/community" element={<CommingSoon />} />
