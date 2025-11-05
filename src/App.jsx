@@ -26,6 +26,7 @@ import MessagesPage from "./pages/MessagesPage";
 import ReportsPage from "./pages/ReportsPage";
 import CommingSoon from "./pages/CommingSoon";
 import TeamContactsPage from "./pages/TeamContactsPage";
+import SchedulingPage from "./pages/TimeLinePages/SchedulingPage";
 
 
 
@@ -60,7 +61,7 @@ function App() {
           <Route path="/timeline" element={<FinanceLayout />}>
             <Route index element={<CommingSoon />} />
             <Route path="milestones" element={<CommingSoon />} />
-            <Route path="scheduling" element={<CommingSoon />} />
+            <Route path="scheduling" element={<SchedulingPage />} />
           </Route>
           <Route path="/timeline" element={<TimeLinePage />} />
           <Route path="/documents" element={<DocumentsPage />} />
