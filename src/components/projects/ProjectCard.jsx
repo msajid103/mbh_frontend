@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { use } from 'react';
 import { MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const statusColors = {
   'In Design': 'bg-green-100 text-green-800',
@@ -9,8 +10,9 @@ const statusColors = {
 };
 
 export default function ProjectCard({ project }) {
+  const navigate = useNavigate();
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow w-[20rem] h-[25rem]">
+    <div onClick={()=> navigate('/project-details')} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow w-[20rem] h-[25rem]">
       {/* Project Image */}
       <div className="relative h-48 overflow-hidden">
         <img

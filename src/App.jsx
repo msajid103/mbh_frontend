@@ -27,6 +27,8 @@ import ReportsPage from "./pages/ReportsPage";
 import CommingSoon from "./pages/CommingSoon";
 import TeamContactsPage from "./pages/TeamContactsPage";
 import SchedulingPage from "./pages/TimeLinePages/SchedulingPage";
+import ProjectDetailView from "./components/projects/ProjectDetailView";
+import MilestonesPage from "./pages/TimeLinePages/MilestonesPage";
 
 
 
@@ -50,6 +52,7 @@ function App() {
           </ProtectedRoute>}
         >
           <Route path="/" element={<MyBuildPage />} />
+          <Route path="/project-details" element={<ProjectDetailView />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/notifications" element={<NotificationPage />} />
           <Route path="/tasks" element={<TaskManagementPage />} />
@@ -60,7 +63,7 @@ function App() {
           </Route>
           <Route path="/timeline" element={<FinanceLayout />}>
             <Route index element={<CommingSoon />} />
-            <Route path="milestones" element={<CommingSoon />} />
+            <Route path="milestones" element={<MilestonesPage />} />
             <Route path="scheduling" element={<SchedulingPage />} />
           </Route>
           <Route path="/timeline" element={<TimeLinePage />} />
