@@ -19,6 +19,7 @@ import TaskManagementPage from "./pages/TaskManagementPage";
 import FinanceLayout from "./pages/FinancePages/FinanceLayout";
 import FinanceDashboardPage from "./pages//FinancePages/FinanceDashboardPage";
 import FinanceCostManagementPage from "./pages//FinancePages/FinanceCostManagementPage";
+import FinancialSummary from "./components/finance/FinancialSummary";
 
 import TimeLinePage from "./pages/TimeLinePage";
 import DocumentsPage from "./pages/DocumentsPage";
@@ -59,7 +60,10 @@ function App() {
           <Route path="/finance" element={<FinanceLayout />}>
             <Route index element={<FinanceDashboardPage />} />
             <Route path="dashboard" element={<FinanceDashboardPage />} />
-            <Route path="costmanagement" element={<FinanceCostManagementPage />} />
+            <Route path="costmanagement">
+              <Route index element={<FinanceCostManagementPage />} />
+              <Route path="finance-detail" element={<FinancialSummary />} />
+            </Route>
           </Route>
           <Route path="/timeline" element={<FinanceLayout />}>
             <Route index element={<CommingSoon />} />

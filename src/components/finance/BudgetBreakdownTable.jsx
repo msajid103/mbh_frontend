@@ -1,8 +1,9 @@
 // src/app/finance/BudgetBreakdownTable.jsx
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { Eye, Pencil, Trash2 } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { editBudget, deleteBudgetRow } from "../../store/slices/financeSlice";
+import { useNavigate } from "react-router-dom";
 
 /* ------------------------ UI Helpers ------------------------ */
 const PillBtn = ({ children, className = "", ...rest }) => (
@@ -126,9 +127,8 @@ const ArrowIcon = ({ open }) => (
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={`transform transition-transform duration-300 ${
-      open ? "rotate-0" : "-rotate-90"
-    }`}
+    className={`transform transition-transform duration-300 ${open ? "rotate-0" : "-rotate-90"
+      }`}
   >
     <path
       d="M3.99741 5.99609L7.9948 9.99349L11.9922 5.99609"
@@ -147,7 +147,8 @@ export default function BudgetBreakdownTable() {
   const contingency = useSelector((state) => state.finance.contingency);
   const [open, setOpen] = useState(false);
   const [editRow, setEditRow] = useState(null);
-  const [viewRow, setViewRow] = useState(null); // ✅ for view modal
+  const [viewRow, setViewRow] = useState(null);
+  const navigate = useNavigate();
 
   const sums = rows.reduce(
     (a, r) => ({
@@ -201,7 +202,8 @@ export default function BudgetBreakdownTable() {
       key={`${row.id}-${isChild ? "child" : "root"}`}
       className={`border-t ${row.isSummary ? "font-semibold bg-gray-50" : ""}`}
     >
-      <td className={`p-3 text-gray-700 ${isChild ? "pl-10" : ""}`}>
+      <td
+        onClick={() => navigate('/finance/costmanagement/finance-detail')} className={`p-3 text-gray-700 ${isChild ? "pl-10" : ""}`}>
         {row.category === "Consultants" && !isChild ? (
           <button
             type="button"
@@ -228,7 +230,7 @@ export default function BudgetBreakdownTable() {
       {/* ✅ Action buttons with Eye icon */}
       <td className="px-4 py-4 flex justify-center gap-2">
         <button
-          onClick={() => setViewRow(row)}
+          onClick={() => navigate('/finance/costmanagement/finance-detail')}
           className="p-1 border-2 rounded-lg border-blue-300 flex items-center justify-center"
           title="View Details"
         >
@@ -298,11 +300,10 @@ export default function BudgetBreakdownTable() {
                     <tr>
                       <td colSpan="8" className="p-0">
                         <div
-                          className={`grid transition-all duration-300 ${
-                            open
+                          className={`grid transition-all duration-300 ${open
                               ? "grid-rows-[1fr] opacity-100"
                               : "grid-rows-[0fr] opacity-0"
-                          }`}
+                            }`}
                         >
                           <div className="overflow-hidden">
                             <table className="min-w-full text-sm">
